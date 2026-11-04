@@ -83,6 +83,7 @@
     bolt: '<path d="M13 3L5 14h6l-1 7 8-11h-6z"/>',
     users: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c2 .7 3.5 2.6 3.5 5.5"/>',
     flag: '<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',
+    bell: '<path d="M6 17V11a6 6 0 0 1 12 0v6l2 2H4zM10 21h4"/>',
     lock: '<rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/>',
     unlock: '<rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 7.6-1.7"/><path d="M12 15v2"/>'
   };
@@ -294,7 +295,7 @@
         <div class="row"><span>XP <b>${p.pts}</b></span>${st ? `<span>حضور <b>${pctOf(st.att)}%</b></span><span>واجبات <b>${pctOf(st.hw)}%</b></span>` : ""}</div></div>`;
     }).join("");
 
-    const alertsBox = ALERTS.length || isTr ? `<div class="next alerts"><span class="lab">تنبيهات مهمة</span>
+    const alertsBox = ALERTS.length || isTr ? `<div class="next alerts"><span class="lab">${ico("bell")} تنبيهات مهمة</span>
         ${ALERTS.length ? `<ul class="notice">${ALERTS.map(a => `<li><span class="t ${esc(a.type)}">${a.type === "deadline" ? "موعد" : a.type === "important" ? "مهم" : "معلومة"}</span><span class="tx">${esc(a.text)}</span>${a.date ? `<span class="d">${esc(a.date)}</span>` : ""}</li>`).join("")}</ul>` : '<p class="muted" style="margin:8px 0 0">لا توجد تنبيهات (تظهر هذه الرسالة لكِ فقط). أضيفي تنبيهًا من لوحة التحكم.</p>'}</div>` : "";
     return `
     <div class="container hero">
@@ -1221,3 +1222,4 @@
     if (sess) applySess(); else { updateChip(); showGate(); }
   })();
 })();
+
