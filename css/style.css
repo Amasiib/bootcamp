@@ -79,9 +79,16 @@ code,.mono{font-family:var(--mono);direction:ltr;unicode-bidi:isolate;font-size:
 .hero .btns{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0 14px}
 .hero .where{font-size:14px;color:var(--mut)}
 .hero .where b{color:var(--ink)}
-.hero-side{display:grid;gap:20px;align-items:stretch;min-width:0}
+.hero-side{display:grid;gap:32px;align-items:stretch;min-width:0}
 .hero-side.two{grid-template-columns:1fr 1fr}
 .hero-side>*{min-width:0}
+.next.alerts{background:#FFF4D6;border:2px solid #F2B63D;box-shadow:0 10px 26px -12px rgba(201,138,18,.55)}
+.next.alerts .lab{display:flex;align-items:center;gap:8px;font-size:15px;color:#8a5a00}
+.next.alerts .lab svg{width:22px;height:22px;flex:none}
+.next.alerts .notice li{border-bottom-color:rgba(138,90,0,.2)}
+.next.alerts .notice .t{background:#fff;color:#8a5a00}
+.next.alerts .notice .t.deadline{background:#fde4e4;color:var(--bad)}
+.next.alerts .tx{color:#4a3200;font-weight:600}
 .alerts .notice li{padding:9px 0;flex-wrap:wrap;gap:8px}
 .alerts .notice .tx{flex:1 1 100%;order:3}
 .alerts .notice{max-height:340px;overflow:auto}
@@ -421,3 +428,4 @@ ul.plain{margin:0;padding:0 18px 0 0;display:grid;gap:6px}
 .lockrow{display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer}
 .lockrow input{width:18px;height:18px}
 .asg p{margin:6px 0 10px}
+
