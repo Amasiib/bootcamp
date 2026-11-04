@@ -294,6 +294,8 @@
         <div class="row"><span>XP <b>${p.pts}</b></span>${st ? `<span>حضور <b>${pctOf(st.att)}%</b></span><span>واجبات <b>${pctOf(st.hw)}%</b></span>` : ""}</div></div>`;
     }).join("");
 
+    const alertsBox = ALERTS.length || isTr ? `<div class="next alerts"><span class="lab">تنبيهات مهمة</span>
+        ${ALERTS.length ? `<ul class="notice">${ALERTS.map(a => `<li><span class="t ${esc(a.type)}">${a.type === "deadline" ? "موعد" : a.type === "important" ? "مهم" : "معلومة"}</span><span class="tx">${esc(a.text)}</span>${a.date ? `<span class="d">${esc(a.date)}</span>` : ""}</li>`).join("")}</ul>` : '<p class="muted" style="margin:8px 0 0">لا توجد تنبيهات (تظهر هذه الرسالة لكِ فقط). أضيفي تنبيهًا من لوحة التحكم.</p>'}</div>` : "";
     return `
     <div class="container hero">
       <div>
@@ -302,7 +304,10 @@
         <div class="btns"><a class="btn btn-pri" href="agenda.html${q}">استعرض الأجندة</a>${qo ? `<a class="btn" href="quizzes.html${q}">اختبار اليوم</a>` : ""}</div>
         <p class="where">${S.progressNote ? esc(S.progressNote) : today() < new Date(S.startDate + "T12:00:00") ? `يبدأ المعسكر <b>${fmtLong(new Date(S.startDate + "T12:00:00"))}</b>.` : `نحن الآن في <b>الأسبوع ${curWeek} من ${WK.length}</b> — أنجزنا ${done} جلسة من ${SES.length}.`}</p>
       </div>
-      <div class="next">${next}</div>
+      <div class="hero-side${ALERTS.length || isTr ? " two" : ""}">
+        <div class="next">${next}</div>
+        ${alertsBox}
+      </div>
     </div>
 
     ${about}
@@ -338,13 +343,7 @@
       </div>
     </section>` : ""}
 
-    ${ALERTS.length || isTr ? `<section class="section band">
-      <div class="container" style="max-width:820px">
-        <div class="sec-head"><h2>تنبيهات <span class="acc">مهمة</span></h2></div>
-        ${ALERTS.length ? "" : '<p class="muted" style="text-align:center">لا توجد تنبيهات (تظهر هذه الرسالة لكِ فقط). أضيفي تنبيهًا من لوحة التحكم.</p>'}
-        <ul class="notice">${ALERTS.map(a => `<li><span class="t ${esc(a.type)}">${a.type === "deadline" ? "موعد" : a.type === "important" ? "مهم" : "معلومة"}</span><span>${esc(a.text)}</span><span class="d">${esc(a.date || "")}</span></li>`).join("")}</ul>
-      </div>
-    </section>` : ""}
+
 
     ${qo ? `<section class="section" style="padding-bottom:0">
       <div class="container"><div class="cta"><h2>جاهز لاختبار اليوم؟</h2><a class="btn" href="quizzes.html${ni >= 0 ? "?s=" + SES[ni].n + keepQ : q}">ابدأ الاختبار</a></div></div>
