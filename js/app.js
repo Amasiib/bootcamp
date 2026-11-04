@@ -305,7 +305,7 @@
         <div class="btns"><a class="btn btn-pri" href="agenda.html${q}">استعرض الأجندة</a>${qo ? `<a class="btn" href="quizzes.html${q}">اختبار اليوم</a>` : ""}</div>
         <p class="where">${S.progressNote ? esc(S.progressNote) : today() < new Date(S.startDate + "T12:00:00") ? `يبدأ المعسكر <b>${fmtLong(new Date(S.startDate + "T12:00:00"))}</b>.` : `نحن الآن في <b>الأسبوع ${curWeek} من ${WK.length}</b> — أنجزنا ${done} جلسة من ${SES.length}.`}</p>
       </div>
-      <div class="hero-side${ALERTS.length || isTr ? " two" : ""}">
+      <div class="hero-side">
         <div class="next">${next}</div>
         ${alertsBox}
       </div>
@@ -1222,4 +1222,3 @@
     if (sess) applySess(); else { updateChip(); showGate(); }
   })();
 })();
-
