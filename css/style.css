@@ -427,4 +427,3 @@ ul.plain{margin:0;padding:0 18px 0 0;display:grid;gap:6px}
 .lockrow{display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer}
 .lockrow input{width:18px;height:18px}
 .asg p{margin:6px 0 10px}
-
